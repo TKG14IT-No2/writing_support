@@ -1,0 +1,101 @@
+<!-- 05/14(野中) 使い方のページを作った(内容は未完成)-->
+<!-- 06/04(野中) 使い方のページを更新した-->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>使い方</title>
+        <style>
+            body {
+                background-color:#fff1b1;
+                }
+
+            table td{
+                text-align: left;
+                border:solid 2px #af9d85;
+                border-radius: 5px;
+                vertical-align: top;
+                line-height: 1.5;
+                text-indent: 1em;
+            }
+
+            summary{
+                cursor: pointer;
+                transition: 0.2s;
+                border-radius: 5px;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: #bee1de;
+                        }
+
+                    &:focus-visible {
+                        outline: dashed #00a5a0;
+                        }
+                    }
+
+            .text{
+                text-indent: 2em;
+            }
+
+      </style>
+    </head>
+    <body>
+        <table>
+        <td>          
+          <p>使い方</p>
+          <p>使用場面<br>
+           ・証明問題の論理展開がわからないとき<br>
+           ・手元にある問題集の問題を利用し、このシステムで記述の補助を行う<br>
+        </p>
+        <details class="details">
+            <summary class="details-summary">基本説明</summary>
+                    <h2>基本的な使い方</h2>
+                    <img src="image/1.png" alt="a"  width="1000" height="500"><br>
+                    <div style="text-align: center;">全体図</div>
+                    <img src="image/3.png" alt="a"><br>
+                    <div style="text-align: center;">拡大図</div>
+                        <p class="text">①テンプレートの空欄に文字を入力して、入力ボタンを押す。</p>
+                        <p class="text">②「記述内容」の欄に入力したテンプレートの内容が追加される。</p>
+                        <p class="text">  このとき、入力した内容が結論部（右上の部分）に自動で入力される。</p>
+                        <p class="text">③辺や角が等しいことを示せたら、番号付けのテンプレートを使って、根拠に番号を振る。</p>
+                        <p class="text">④これを繰り返して、記述を完成させる。</p>
+
+                   <img src="image/4.png" alt="a"><br>
+                        <p class="text">図形の性質から根拠を示す場合、メニューの中から要素を選ぶことで、</p>
+                        <p class="text">特徴的な図形の内容を入力することができる。</p>
+
+                    <h2>番号機能の説明</h2>
+                    <img src="image/5.png" alt="a"><br>
+                    <p class="text">上10個のボタンは押すだけで「記述内容」の欄に入力される。分割の場合は根拠の欄に入力される）</p>
+                    <p class="text">下10個のボタンは、押すとその下の空欄に入力される。</p>
+                    <p class="text">そのあと入力ボタンを押すと「記述内容」の欄に入力される。（分割の場合は結論の欄に入力される）</p>
+
+                    <h2>実際の操作画面</h2>
+                        <p class="text">そのうち追加します</p>
+
+          </details>
+          <details class="details"><summary class="details-summary">機能説明</summary>
+                    <h2>記述の分割・結合</h2>
+                        <p class="text">記述内容の横にあるピンク色の「分割」「結合」ボタンを押すと記述内容が分割・結合されます</p>
+                        <img src="image/6.png" alt="a"><img src="image/7.png" alt="a">
+                        <div style="text-align: center;">左：分割状態  右：結合状態</div>
+                        <p class="text">分割状態は基礎的な問題を解くときに使う</p>
+                        <p class="text">結合状態は汎用的に使える</p>
+                    <h2>タイマー</h2>
+                        <img src="image/8.png" alt="a">
+                        <p class="text">普通のタイマー機能と特に変わらない</p>
+                        <p class="text">スタートで開始、ストップで停止、リセットで00:00に戻す</p>
+          </details>
+          <details class="details">
+            <summary class="details-summary">証明問題のコツ</summary>
+            <p class="text">未完成</p>
+            
+                
+            </details>
+
+
+          </td>
+          </table>
+    </body>
+
+</html>

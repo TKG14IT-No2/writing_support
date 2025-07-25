@@ -1,0 +1,161 @@
+.textbox-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    padding: 5px;
+    border: 2px solid #974;
+    border-radius: 5px;
+    background-color: #c95;
+    cursor: grab;
+}
+.item{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #db8;
+    cursor: grab;
+}
+
+.textbox-wrapper input {
+    flex: 1;
+    width: 250px;
+    font-size: 12.5px;
+}
+
+button{
+    width: 60px;
+    height: 35px;
+    font-size: 12.5px;
+    border-radius:5px;
+}
+.button_wide{
+    width: 80px;
+}
+.input_button{
+    background-color: #08f;
+    border: 2px solid #06c;
+    color: #fff;
+    &:hover{
+        background-color: #fff;
+        color: #08f;
+    }
+}
+.delete_button{
+    background-color: #f00;
+    border: 2px solid #c00;
+    color: #fff;
+    &:hover{
+        background-color: #fff;
+        color: #f00;
+    }
+}
+
+.fromnumber_button{
+    background-color: #08f;
+    border: 2px solid #06c;
+    color: #fff;
+    width: 90px;
+    &:hover{
+        background-color: #fff;
+        color: #08f;
+    }
+}
+.numbering_button{
+    background-color: #080;
+    border: 2px solid #060;
+    color: #fff;
+
+    &:hover{
+        background-color: #fff;
+        color: #080;
+    }
+}
+#manual{
+    width: 200px;
+    height: 50px;
+    background-color: #f55;
+    border: 2px solid #c00;
+    color: #fff;
+    border-radius:5px;
+    font-size: 15px;
+
+    &:hover{
+        background-color: #fff;
+        color: #f55;
+    }
+}
+input{
+    width: 60px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+select{
+    width: 80px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+table{
+    border-collapse:separate;
+    border-spacing: 5px;
+    border: none;
+    width: 100%;
+}
+table th,table td{
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+table th{
+    background-color: #c95;
+    text-align: center;
+    color: white;
+    border:solid 1px #974;
+    font-size: 20px;
+    min-width: auto;
+}
+table td{
+    background-color: #edb;
+    text-align: left;
+    border:solid 1px #a98;
+    vertical-align: top;
+    line-height: 1.0;
+    min-height: 850px;
+}
+.width-350{
+    min-width: 350px;
+}
+.width-400{
+    min-width: 400px;
+}
+.width-450{
+    min-width: 450px;
+}
+.width-500{
+    min-width: 500px;
+}
+summary{
+    cursor: pointer;
+    transition: 0.2s;
+
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #bed;
+    }
+}
+.invisible{
+    color: #edb;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #bed;
+        color: #000;
+    }
+}

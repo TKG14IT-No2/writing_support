@@ -1,0 +1,161 @@
+button{
+    width: 60px;
+    height: 35px;
+    font-size: 12.5px;
+    border-radius:5px;
+}
+.input_button{
+    background-color: #0080ff;
+    border: 2px solid #0060c0;
+    color: #fff;
+    &:hover{
+        background-color: #fff;
+        color: #0080ff;
+    }
+}
+.move_button{
+    width: 120px;
+    background-color: #8000ff;
+    border: 2px solid #6000c0;
+    color: #fff;
+    &:hover{
+        background-color: #fff;
+        color: #8000ff;
+    }
+}
+#delete{
+    width: 80px;
+    background-color: #ff2c2c;
+    border: 2px solid #c00000;
+    color: #fff;
+
+    &:hover{
+        background-color: #fff;
+        color: #0080ff;
+    }
+}
+.numbering_button{
+    background-color: #008000;
+    border: 2px solid #006000;
+    color: #fff;
+
+    &:hover{
+        background-color: #fff;
+        color: #008000;
+    }
+}
+.timer_button{
+    width: 80px;
+    background-color: #0080ff;
+    border: 2px solid #0060c0;
+    color: #fff;
+
+    &:hover{
+        background-color: #fff;
+        color: #0080ff;
+    }
+}
+#Button_ModeChange{
+    background-color: #f184ff;
+    border: 2px solid #aa2abb;
+    color: #fff;
+
+    &:hover{
+        background-color: #fff;
+        color: #f184ff;
+    }
+}
+#manual{
+    width: 200px;
+    height: 50px;
+    background-color: #ff5252;
+    border: 2px solid #c00000;
+    color: #fff;
+    border-radius:5px;
+    font-size: 15px;
+
+    &:hover{
+        background-color: #fff;
+        color: #ff5252;
+    }
+}
+input{
+    width: 80px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+select{
+    width: 80px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+select#figure_property{
+    width: 140px;
+}
+
+table{
+    border-collapse:separate;
+    border-spacing: 5px;
+    border: none;
+    width: 100%;
+}
+table th,table td{
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+table th{
+    background-color: #c79852;
+    text-align: center;
+    color: white;
+    border:solid 1px #927141;
+    font-size: 20px;
+    min-width: auto;
+}
+table td{
+    background-color: #e4d4bc;
+    text-align: left;
+    border:solid 1px #af9d85;
+    vertical-align: top;
+    line-height: 1.0;
+}
+summary{
+    cursor: pointer;
+    transition: 0.2s;
+
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #bee1de;
+    }
+}
+#invisible{
+    color: #e4d4bc;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #bee1de;
+        color: #000;
+    }
+}
+textarea{
+    font-size: 25px;
+    border-radius: 5px;
+    resize: vertical;
+    width: 100%;
+    min-height: 800px;
+}
+textarea.writing_integrate{
+    height: 770px
+}
+.visible{
+    display: block;
+}
+.invisible{
+    display: none;
+}
+.width-400{
+    min-width: 400px;
+    max-width: 400px;
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>記述支援システム</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+
+  <body>
+    <table border="1">
+      <tr>
+      <th>記述内容</th>
+      <th colspan="3">テンプレート</th>
+      </tr>
+
+      <tr>
+      <td id="output" class="width-450"></td>
+
+      <td class="width-350">
+        <details open>
+          <summary><strong>仮定</strong></summary>
+          <div id="input-1" >
+            <div class="item">
+              <span>△</span>
+              <input type="text">
+              <span>と△</span>
+              <input type="text">
+              <span>において</span>
+            </div>
+            <div class="item">
+              <span>△</span>
+              <input type="text">
+              <span>において</span>
+            </div>
+          </div>
+        </details>
+        <br>
+        <details open>
+          <summary><strong>導出の根拠</strong></summary>
+          <div id="input-2">
+            <div class="item">
+              <span>仮定から</span>
+            </div>
+            <div class="item">
+              <span>対角は等しいから</span>
+            </div>
+            <div class="item">
+              <span>平行線の</span>
+              <select id="parallel">
+                <option value="同位角">同位角</option>
+                <option value="錯角">錯角</option>  
+              </select>
+              <span>は等しいから</span>
+            </div>
+            <div class="item">
+              <span>等しい長さの弧に対する円周角は等しいから</span>
+            </div>
+            <div class="item">
+              <span>共通だから</span>
+            </div>
+            <!--FigureProperty-->
+            <div class="item">
+              <select id="figure_type">
+                <option value="△">三角形</option>
+                <option value="四角形">四角形</option>
+              </select>
+              <input type="text" id="Text_FigureProperty">は
+              <select id="figure_property">
+                <optgroup label="三角形">
+                  <option value="正三角形">正三角形</option>
+                  <option value="直角三角形">直角三角形</option>
+                  <option value="二等辺三角形">二等辺三角形</option>
+                  <option value="直角二等辺三角形">直角二等辺三角形</option>
+                </optgroup>
+                <optgroup label="四角形">
+                  <option value="正方形">正方形</option>
+                  <option value="長方形">長方形</option>
+                  <option value="ひし形">ひし形</option>
+                  <option value="台形">台形</option>
+                </optgroup>
+              </select>だから
+            </div>
+          </div>
+        </details>
+        <br>
+        <details open>
+          <summary><strong>辺・角の関係</strong></summary>
+          <div id="input-3">
+            <div class="item">
+              <select id="line_or_arc" class="one_letter_select">
+                <option value="線分">線分</option>
+                <option value="弧">弧</option>
+              </select>
+              <input type="text" id="Text_LineToLine_1">
+              <select id="line_to_line" class="one_letter_select">
+                <option value="=">=</option>
+                <option value="⊥">⊥</option>
+                <option value="∥">∥</option>
+              </select>
+              <select id="line_or_arc" class="one_letter_select">
+                <option value="線分">線分</option>
+                <option value="弧">弧</option>
+              </select>
+              <input type="text" id="Text_LineToLine_2">
+            </div>
+
+            <div class="item">
+              <span>∠</span>
+              <input type="text" id="Text_AngleToAngle_1">
+              <select id="angle_to_angle" class="one_letter_select">
+                <option value="=">=</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+              </select>
+              <span>∠</span>
+              <input type="text" id="Text_AngleToAngle_2">
+            </div>
+
+            <div class="item">
+              <span>∠</span>
+              <input type="text" id="Text_AngleToValue_1">
+              <select id="angle_to_value" class="one_letter_select">
+                <option value="=">=</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+              </select>
+              <input type="text" id="Text_AngleToValue_2">
+              <span>°</span>
+            </div>
+
+            <div class="item">
+              <input type="text" id="Text_ValueToAngle_1">
+              <span>°</span>
+              <select id="value_to_angle" class="one_letter_select">
+                <option value="+">+</option>
+                <option value="-">-</option>
+              </select>
+              <span>∠</span>
+              <input type="text" id="Text_ValueToAngle_2">
+            </div>
+
+            <div class="item">
+              <input type="text" id="Text_LineRatio_1">
+              <span>:</span>
+              <input type="text" id="Text_LineRatio_2">
+              <span>=</span>
+              <input type="text" id="Text_LineRatio_3">
+              <span>:</span>
+              <input type="text" id="Text_LineRatio_4">
+            </div>
+          </div>
+
+          <div><button onclick="ClickButton_AddAngle()" class="input_button">入力</button>
+            <select id="add_angle" class="one_letter_select">
+              <option value="=">=</option>
+              <option value="+">+</option>
+              <option value="-">-</option>
+            </select>
+            ∠<input type="text" id="Text_AddAngle">
+          </div>
+        </details>
+      </td>
+      <td class="width-450">
+        <details open>
+          <summary><strong>番号</strong></summary>
+          <p>
+            <button onclick="ClickButton_Numbering('  ...(1)')" class="numbering_button">...(1)</button>
+            <button onclick="ClickButton_Numbering('  ...(2)')" class="numbering_button">...(2)</button>
+            <button onclick="ClickButton_Numbering('  ...(3)')" class="numbering_button">...(3)</button>
+            <button onclick="ClickButton_Numbering('  ...(4)')" class="numbering_button">...(4)</button>
+            <button onclick="ClickButton_Numbering('  ...(5)')" class="numbering_button">...(5)</button>
+          </p>
+          <p>
+            <button onclick="ClickButton_Numbering('  ...(6)')" class="numbering_button">...(6)</button>
+            <button onclick="ClickButton_Numbering('  ...(7)')" class="numbering_button">...(7)</button>
+            <button onclick="ClickButton_Numbering('  ...(8)')" class="numbering_button">...(8)</button>
+            <button onclick="ClickButton_Numbering('  ...(9)')" class="numbering_button">...(9)</button>
+            <button onclick="ClickButton_Numbering('  ...(10)')" class="numbering_button">...(10)</button>
+          </p>
+          <br>
+          <p>
+            <button onclick="ClickButton_ReasonNumber('(1)')" class="numbering_button">(1)</button>
+            <button onclick="ClickButton_ReasonNumber('(2)')" class="numbering_button">(2)</button>
+            <button onclick="ClickButton_ReasonNumber('(3)')" class="numbering_button">(3)</button>
+            <button onclick="ClickButton_ReasonNumber('(4)')" class="numbering_button">(4)</button>
+            <button onclick="ClickButton_ReasonNumber('(5)')" class="numbering_button">(5)</button>
+          </p>
+          <p>
+            <button onclick="ClickButton_ReasonNumber('(6)')" class="numbering_button">(6)</button>
+            <button onclick="ClickButton_ReasonNumber('(7)')" class="numbering_button">(7)</button>
+            <button onclick="ClickButton_ReasonNumber('(8)')" class="numbering_button">(8)</button>
+            <button onclick="ClickButton_ReasonNumber('(9)')" class="numbering_button">(9)</button>
+            <button onclick="ClickButton_ReasonNumber('(10)')" class="numbering_button">(10)</button>
+          </p>
+          <div id="input-4">
+            <div class="item">
+              <input type="text" id="Text_FromNumber">より
+            </div>
+          </div>
+        </details>
+        <br>
+        <details open>
+          <summary><strong>結論の根拠</strong></summary>
+          <div id="input-5">
+            <div class="item">
+              <span>1組の辺とその両端の角がそれぞれ等しいから</span>
+            </div>
+            <div class="item">
+              <span>2組の辺とその間の角がそれぞれ等しいから</span>
+            </div>
+            <div class="item">
+              <span>3組の辺がそれぞれ等しいから</span>
+            </div>
+            <br>
+            <div class="item">
+              <span>2組の角がそれぞれ等しいから</span>
+            </div>
+            <div class="item">
+              <span>2組の辺の比とその間の角がそれぞれ等しいから</span>
+            </div>
+            <div class="item">
+              <span>3組の辺の比がそれぞれ等しいから</span>
+            </div>
+          </div>
+        </details>       
+      </td>
+      <td id="input-td-3" class="width-370">
+        <details open>
+          <summary><strong>結論</strong></summary>
+          
+          <!--ConcludeRelation-->
+          <div class="item"><button onclick="ClickButton_ConcludeRelation()" class="input_button">入力</button>
+            △<input type="text" id="Text_ConcludeRelation_1">
+            <select id="triangle_relation" class="one_letter_select">
+              <option value="≡">≡</option>
+              <option value="∽">∽</option>
+            </select>
+            △<input type="text" id="Text_ConcludeRelation_2"></div>
+                  
+          <!--ConcludeProperty-->
+          <div class="item"><button onclick="ClickButton_ConcludeProperty()" class="input_button">入力</button>
+            △<input type="text" id="Text_ConcludeProperty">は
+            <select id="triangle_type">
+              <option value="正三角形">正三角形</option>
+              <option value="二等辺三角形">二等辺三角形</option>
+              <option value="直角三角形">直角三角形</option>
+            </select>
+          </div>
+        </details>
+        <br>
+        <details open>
+          <summary><strong>タイマー</strong></summary>
+          <table>
+            <th>
+              <div class="item" id="timer" class="timer">00:00</div>
+            </th>
+          </table>
+              
+          <button class="button_wide input_button" id="start/stop" onclick="timer_start()">スタート</button>
+          <button class="button_wide input_button" id="reset" onclick="timer_reset()">リセット</button>
+          <br>
+        </details>
+        <br>
+        <details close>
+          <summary class="details invisible"><strong>使い方</strong></summary>
+          <button id="manual" onclick="manualOpen()">使い方ウィンドウを開く</button>
+        </details>
+        <br>
+        <details>
+          <summary close class="invisible"><strong>隠しバー</strong></summary>
+          <div class="item"><button id="check" onclick="CheckButton()" class="input_button">検証</button></div>
+          <div class="item"><button onclick="ClickButton_password()" class="input_button">決定</button><input type="text" id="Text_password"></div>
+          <h2>テキストボックスをドラッグで並べ替え</h2>
+          
+    
+        <span></</span>
+        tr>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>

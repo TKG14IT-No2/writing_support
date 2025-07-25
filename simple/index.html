@@ -1,0 +1,236 @@
+<!-- 08/20(津田) 今回のバージョンから変更日時・内容を記述するようにした -->
+<!-- 08/20(津田) 「番号の入力」「指定行の削除」の番号をテキスト入力から変更できるようにした -->
+<!-- 09/08(津田) テンプレートを折りたためるようにした -->
+<!-- 09/08(津田) ボタンの記述方法を変更した -->
+<!-- 09/08(津田) 一部の関数を統合した -->
+<!-- 09/08(津田) 表の幅を固定した -->
+<!-- 10/09(津田) 「記述内容」をテキストエリアで表示するようにした -->
+<!-- 10/09(津田) 「構文」を「テンプレート」に変更した -->
+<!-- 11/27(津田) 「記述内容」がテキストエリアになったため、削除処理を削除した -->
+<!-- 12/09(津田) CSSでボタンとテキストボックスの表示を変更した -->
+<!-- 12/09(津田) 入力行設定を作成した -->
+<!-- 01/06(津田) 細かなバグを修正した -->
+<!-- 01/06(津田) タイマー機能を実装した -->
+<!-- 01/19(野中) 「辺・角の関係」にテンプレートを追加した-->
+<!-- 01/19(野中) 「角度の計算」のテンプレートを追加した-->
+<!-- 01/20(津田) 細部を調整した-->
+<!-- 02/05(津田) 入力の改行を二段から一段にした-->
+<!-- 02/05(津田) 番号付けに一段使う仕様から番号付けの対象となる行にくっつけるようにした-->
+<!-- 02/05(津田) 裏コマンドを追加した-->
+<!-- 02/10(津田) いくつかのテンプレートを1つにまとめた-->
+<!-- 02/18(津田) カーソルの位置に自動入力されるようにし、入力行設定を削除した-->
+<!-- 02/18(津田) タイマーのバグを修正した-->
+<!-- 02/23(津田) 番号の入力方法を変更した-->
+<!-- 03/03(津田) HTML,CSS,JavaScriptを1つのファイルにまとめた-->
+<!-- 05/07(野中) 辺の比と円周角のテンプレートを追加した-->
+<!-- 05/07(野中) テキストエリアを複数に分けた(従来通りも可能)-->
+<!-- 05/08(津田) 内部処理を変更した(動作は従来通り)-->
+<!-- 05/08(津田) テキストエリアを分けるボタンの実装を変更した-->
+<!-- 05/08(津田) HTML,CSS,JavaScriptのファイルを別々にした-->
+<!-- 05/14(野中) CSSを変更した-->
+<!-- 05/14(野中) 使い方のページを作り、別ウィンドウで開くようにした(内容は未完成)-->
+<!-- 05/15(津田) CSSを変更した-->
+<!-- 05/15(津田) タイマーのバグを発見した(未修整)-->
+
+<!-- 06/12(津田) 使用するテンプレート以外を隠して情報量を制限-->
+
+
+
+
+
+<html lang='ja'>
+    <head>
+        <meta charset='utf-8'>
+        <title>記述支援システム</title>
+        <link href='css/main.css' rel='stylesheet' type='text/css' media='all'>
+        <link href='css/chromebook.css' rel='styleshee' type='text/css' media='all'>
+    </head>
+
+    <body>
+        <table border='1'>
+            <tr>
+                <th>記述内容</th>
+                <th colspan='3'>テンプレート</th>
+            </tr>
+            <td id='write' class='width-400'>
+                <textarea id='writing'></textarea>
+            </td>
+            <td>
+                <div class='visible assumption'>
+                    <summary><strong>仮定</strong></summary>
+                    <!--SettingTwoTriangle-->
+                    <p><button id='Button_SettingTwoTriangle' onclick='ClickButton_SettingTwoTriangle()' class='input_button'>入力</button>&emsp;△<input type='text' id='Text_SettingTwoTriangle_1'>と△<input type='text' id='Text_SettingTwoTriangle_2'>において</p>
+                    <!--SettingOneTriangle-->
+                    <p><button id='Button_SettingOneTriangle' onclick='ClickButton_SettingOneTriangle()' class='input_button'>入力</button>&emsp;△<input type='text' id='Text_SettingOneTriangle'>において</p>
+                    <br>
+                    <p>
+                        <button onclick="setVisible('.derive-basis')" class="move_button">導出の根拠→</button>
+                    </p>
+                </div>
+                <div class='invisible derive-basis'>
+                    <summary><strong>導出の根拠</strong></summary>
+                    <p><button onclick='InputLine("仮定から")' class='input_button'>入力</button>&emsp;仮定から</p>
+                    <p><button onclick='InputLine("対頂角は等しいから")' class='input_button'>入力</button>&emsp;対角は等しいから</p>
+                    <p><button onclick='ClickButton_Parallel()' class='input_button'>入力</button>&emsp;平行線の
+                        <select id='parallel'>
+                            <option value='同位角'>同位角</option>
+                            <option value='錯角'>錯角</option>  
+                        </select>は等しいから
+                    <p><button onclick='InputLine("等しい長さの弧に対する円周角は等しいから")' class='input_button'>入力</button>&emsp;等しい長さの弧に対する円周角は等しいから</p>
+                    <p><button onclick='InputLine("共通だから")' class='input_button'>入力</button>&emsp;共通だから</p>
+                    <!--FigureProperty-->
+                    <p><button onclick='ClickButton_FigureProperty()' class='input_button'>入力</button>&emsp;
+                        <select id='figure_type'>
+                            <option value='△'>三角形</option>
+                            <option value='四角形'>四角形</option>
+                        </select>
+                        <input type='text' id='Text_FigureProperty'>は
+                        <select id='figure_property'>
+                            <optgroup label='三角形'>
+                                <option value='正三角形'>正三角形</option>
+                                <option value='直角三角形'>直角三角形</option>
+                                <option value='二等辺三角形'>二等辺三角形</option>
+                                <option value='直角二等辺三角形'>直角二等辺三角形</option>
+                            </optgroup>
+                            <optgroup label='四角形'>
+                                <option value='正方形'>正方形</option>
+                                <option value='長方形'>長方形</option>
+                                <option value='ひし形'>ひし形</option>
+                                <option value='台形'>台形</option>
+                            </optgroup>
+                        </select>だから
+                    </p>
+                    <p>
+                        <button onclick="setVisible('.assumption')" class="move_button">←仮定</button>
+                        <button onclick="setVisible('.relation-side-angle')" class="move_button">辺・角の関係→</button>
+                        
+                    </p>
+                </div>
+                <div class='invisible relation-side-angle'>
+                    <summary><strong>辺・角の関係</strong></summary>
+                    <!--LineToLine-->
+                    <p><button id='Button_LineToLine' onclick='ClickButton_LineToLine()' class='input_button'>入力</button>&emsp;
+                        <select id='line_or_arc' class='one_letter_select'>
+                            <option value='線分'>線分</option>
+                            <option value='弧'>弧</option>
+                        </select>
+                        <input type='text' id='Text_LineToLine_1'>
+                        <select id='line_to_line' class='one_letter_select'>
+                            <option value='='>=</option>
+                            <option value='⊥'>⊥</option>
+                            <option value='∥'>∥</option>
+                        </select>
+                        <select id='line_or_arc' class='one_letter_select'>
+                            <option value='線分'>線分</option>
+                            <option value='弧'>弧</option>
+                        </select>
+                        <input type='text' id='Text_LineToLine_2'>
+                    </p>
+                    <!--AngleToAngle-->
+                    <p><button id='Button_AngleToAngle' onclick='ClickButton_AngleToAngle()' class='input_button'>入力</button>&emsp;∠<input type='text' id='Text_AngleToAngle_1'>
+                        <select id='angle_to_angle' class='one_letter_select'>
+                            <option value='='>=</option>
+                            <option value='+'>+</option>
+                            <option value='-'>-</option>
+                        </select>
+                        ∠<input type='text' id='Text_AngleToAngle_2'>
+                    </p>
+                    
+                    <!--AngleToValue-->
+                    <p><button id='Button_AngleToValue' onclick='ClickButton_AngleToValue()' class='input_button'>入力</button>&emsp;∠<input type='text' id='Text_AngleToValue_1'>
+                        <select id='angle_to_value' class='one_letter_select'>
+                            <option value='='>=</option>
+                            <option value='+'>+</option>
+                            <option value='-'>-</option>
+                        </select>
+                        <input type='text' id='Text_AngleToValue_2'>°
+                    </p>
+                    <!--ValueToAngle-->
+                    <p><button id='Button_ValueToAngle' onclick='ClickButton_ValueToAngle()' class='input_button'>入力</button>&emsp;<input type='text' id='Text_ValueToAngle_1'>°
+                        <select id='value_to_angle' class='one_letter_select'>
+                            <option value='+'>+</option>
+                            <option value='-'>-</option>
+                        </select>
+                        ∠<input type='text' id='Text_ValueToAngle_2'>
+                    </p>
+                    <!--LineRatio-->
+                    <p><button id='LineRatio' onclick='ClickButton_LineRatio()' class='input_button'>入力</button>&emsp;
+                        <input type='text' id='Text_LineRatio_1'>:<input type='text' id='Text_LineRatio_2'>=
+                        <input type='text' id='Text_LineRatio_3'>:<input type='text' id='Text_LineRatio_4'>
+                    </p>
+                    <!--AddAngle-->
+                    <p><button id='Button_AddAngle' onclick='ClickButton_AddAngle()' class='input_button'>入力</button>&emsp;
+                        <select id='add_angle' class='one_letter_select'>
+                            <option value='='>=</option>
+                            <option value='+'>+</option>
+                            <option value='-'>-</option>
+                        </select>
+                        ∠<input type='text' id='Text_AddAngle'>
+                    </p>
+                </div>
+                <div class='invisible numbering'>
+                    <summary><strong>番号 (根拠・結論)</strong></summary>
+                    <p>
+                        <button onclick='ClickButton_Numbering("  ...(1)")' class='numbering_button'>...(1)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(2)")' class='numbering_button'>...(2)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(3)")' class='numbering_button'>...(3)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(4)")' class='numbering_button'>...(4)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(5)")' class='numbering_button'>...(5)</button>&emsp;
+                    </p>
+                    <p>
+                        <button onclick='ClickButton_Numbering("  ...(6)")' class='numbering_button'>...(6)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(7)")' class='numbering_button'>...(7)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(8)")' class='numbering_button'>...(8)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(9)")' class='numbering_button'>...(9)</button>&emsp;
+                        <button onclick='ClickButton_Numbering("  ...(10)")' class='numbering_button'>...(10)</button>&emsp;
+                    </p>
+                    <br>
+                    <p>
+                        <button onclick='ClickButton_ReasonNumber("(1)")' class='numbering_button'>(1)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(2)")' class='numbering_button'>(2)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(3)")' class='numbering_button'>(3)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(4)")' class='numbering_button'>(4)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(5)")' class='numbering_button'>(5)</button>&emsp;
+                    </p>
+                    <p>
+                        <button onclick='ClickButton_ReasonNumber("(6)")' class='numbering_button'>(6)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(7)")' class='numbering_button'>(7)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(8)")' class='numbering_button'>(8)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(9)")' class='numbering_button'>(9)</button>&emsp;
+                        <button onclick='ClickButton_ReasonNumber("(10)")' class='numbering_button'>(10)</button>&emsp;
+                    </p>
+                    <p><button id='Button_FromNumber' onclick='ClickButton_FromNumber()' class='input_button'>入力</button>&emsp;<input type='text' id='Text_FromNumber'>より</p>
+                </div>
+                <div class='invisible conclusion-basis'>
+                    <summary><strong>結論の根拠 (結論)</strong></summary>
+                    <p><button onclick='InputLine("1組の辺とその両端の角がそれぞれ等しいから")' class='input_button'>入力</button>&emsp;1組の辺とその両端の角がそれぞれ等しいから</p>
+                    <p><button onclick='InputLine("2組の辺とその間の角がそれぞれ等しいから")' class='input_button'>入力</button>&emsp;2組の辺とその間の角がそれぞれ等しいから</p>
+                    <p><button onclick='InputLine("3組の辺がそれぞれ等しいから")' class='input_button'>入力</button>&emsp;3組の辺がそれぞれ等しいから</p>
+                <br>
+                    <p><button onclick='InputLine("2組の角がそれぞれ等しいから")' class='input_button'>入力</button>&emsp;2組の角がそれぞれ等しいから</p>
+                    <p><button onclick='InputLine("2組の辺の比とその間の角がそれぞれ等しいから")' class='input_button'>入力</button>&emsp;2組の辺の比とその間の角がそれぞれ等しいから</p>
+                    <p><button onclick='InputLine("3組の辺の比がそれぞれ等しいから")' class='input_button'>入力</button>&emsp;3組の辺の比がそれぞれ等しいから</p>
+                </div>
+                <br>
+                <div class='invisible conclusion'>
+                    <summary><strong>結論</strong></summary>
+                    <!--ConcludeRelation-->
+                    <p><button id='Button_ConcludeRelation' onclick='ClickButton_ConcludeRelation()' class='input_button'>入力</button>&emsp;△<input type='text' id='Text_ConcludeRelation_1'>
+                        <select id='triangle_relation' class='one_letter_select'>
+                            <option value='≡'>≡</option>
+                            <option value='∽'>∽</option>
+                        </select>
+                        △<input type='text' id='Text_ConcludeRelation_2'></p>
+                    <!--ConcludeProperty-->
+                    <p><button id='Button_ConcludeProperty' onclick='ClickButton_ConcludeProperty()' class='input_button'>入力</button>&emsp;△<input type='text' id='Text_ConcludeProperty'>は
+                        <select id='triangle_type'>
+                            <option value='正三角形'>正三角形</option>
+                            <option value='二等辺三角形'>二等辺三角形</option>
+                            <option value='直角三角形'>直角三角形</option>
+                        </select></p>
+                </div>
+            </td>
+        </table>
+        <script src='js/main.js' charset='utf-8'></script>
+    </body>
+</html>

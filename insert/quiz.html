@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズ</title>
+    <style>
+        body {
+            background-color:#fff1b1;
+        }
+        table td{
+            background-color:#fff1b1;
+            min-width: 750px;
+            min-height: 1000px;
+            text-align: left;
+            border:solid 2px #af9d85;
+            border-radius: 5px;
+            vertical-align: top;
+            line-height: 1.5;
+            text-indent: 1em;
+        }
+
+        summary{
+            cursor: pointer;
+            transition: 0.2s;
+            border-radius: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #bee1de;
+                    }
+
+                &:focus-visible {
+                    outline: dashed #00a5a0;
+                    }
+                }
+
+        .text{
+            text-indent: 2em;
+        }
+        
+        .anim-box.fadein.is-animated {
+            animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+        }
+ 
+        @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            }
+        100% {
+            opacity: 1;
+            }
+        }
+  </style>
+</head>
+<body>
+    <h3>Q1</h3>
+    <p>この中で、三角形の合同を示す条件はどれか。</p>
+    <button id="choise_001" onclick='OK()'>1組の辺とその両端の角がそれぞれ等しいから</button>
+    <button id="choise_002" onclick='NG()'>cccccccccc</button><br>
+    <button id="choise_003" onclick='NG()'>bbbbbbbbbb</button>
+    <button id="choise_004" onclick='NG()'>aaaaaaaaaa</button><br>
+
+    <script>
+        function OK{
+
+        }
+    </script>
+</body>
+</html>
