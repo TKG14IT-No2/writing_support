@@ -5,78 +5,68 @@ button{
     border-radius:5px;
 }
 .input_button{
-    background-color: #0080ff;
-    border: 2px solid #0060c0;
+    background-color: #08f;
+    border: 2px solid #06c;
     color: #fff;
     &:hover{
         background-color: #fff;
-        color: #0080ff;
+        color: #08f;
     }
 }
 .move_button{
     width: 120px;
-    background-color: #00ff00;
-    border: 2px solid #6000c0;
+    background-color: #80f;
+    border: 2px solid #60c;
     color: #fff;
     &:hover{
         background-color: #fff;
-        color: #8000ff;
+        color: #80f;
     }
 }
 #delete{
     width: 80px;
-    background-color: #ff2c2c;
-    border: 2px solid #c00000;
+    background-color: #f00;
+    border: 2px solid #c00;
     color: #fff;
 
     &:hover{
         background-color: #fff;
-        color: #0080ff;
+        color: #08f;
     }
 }
 .numbering_button{
-    background-color: #008000;
-    border: 2px solid #006000;
+    background-color: #080;
+    border: 2px solid #060;
     color: #fff;
 
     &:hover{
         background-color: #fff;
-        color: #008000;
+        color: #080;
     }
 }
 .timer_button{
     width: 80px;
-    background-color: #0080ff;
-    border: 2px solid #0060c0;
+    background-color: #08f;
+    border: 2px solid #06c;
     color: #fff;
 
     &:hover{
         background-color: #fff;
-        color: #0080ff;
-    }
-}
-#Button_ModeChange{
-    background-color: #f184ff;
-    border: 2px solid #aa2abb;
-    color: #fff;
-
-    &:hover{
-        background-color: #fff;
-        color: #f184ff;
+        color: #08f;
     }
 }
 #manual{
     width: 200px;
     height: 50px;
-    background-color: #ff5252;
-    border: 2px solid #c00000;
+    background-color: #f55;
+    border: 2px solid #c00;
     color: #fff;
     border-radius:5px;
     font-size: 15px;
 
     &:hover{
         background-color: #fff;
-        color: #ff5252;
+        color: #f55;
     }
 }
 input{
@@ -106,17 +96,17 @@ table th,table td{
     padding: 5px 5px;
 }
 table th{
-    background-color: #c79852;
+    background-color: #c95;
     text-align: center;
     color: white;
-    border:solid 1px #927141;
+    border:solid 1px #974;
     font-size: 20px;
     min-width: auto;
 }
 table td{
-    background-color: #e4d4bc;
+    background-color: #edb;
     text-align: left;
-    border:solid 1px #af9d85;
+    border:solid 1px #a98;
     vertical-align: top;
     line-height: 1.0;
 }
@@ -127,7 +117,7 @@ summary{
     border-radius: 5px;
 
     &:hover {
-        background-color: #bee1de;
+        background-color: #bed;
     }
 }
 #invisible{
@@ -135,7 +125,7 @@ summary{
 
     &:hover {
         cursor: pointer;
-        background-color: #bee1de;
+        background-color: #bed;
         color: #000;
     }
 }
