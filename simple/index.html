@@ -66,41 +66,32 @@
           <summary><strong>辺・角の関係</strong></summary>
           <p><button id='Button_LineToLine' onclick='ClickButton_LineToLine()' class='input_button'>入力</button>&emsp;
             <select id='line_or_arc' class='one_letter_select'>
-              <option value='線分'>線分</option>
-              <option value='弧'>弧</option>
+              <option value='線分'>線分</option><option value='弧'>弧</option>
             </select>
             <input type='text' id='Text_LineToLine_1'>
             <select id='line_to_line' class='one_letter_select'>
-              <option value='='>=</option>
-              <option value='⊥'>⊥</option>
-              <option value='∥'>∥</option>
+              <option value='='>=</option><option value='⊥'>⊥</option><option value='∥'>∥</option>
             </select>
             <select id='line_or_arc' class='one_letter_select'>
-              <option value='線分'>線分</option>
-              <option value='弧'>弧</option>
+              <option value='線分'>線分</option><option value='弧'>弧</option>
             </select>
             <input type='text' id='Text_LineToLine_2'>
           </p>
           <p><button id='Button_AngleToAngle' onclick='ClickButton_AngleToAngle()' class='input_button'>入力</button>&emsp;∠<input type='text' id='Text_AngleToAngle_1'>
             <select id='angle_to_angle' class='one_letter_select'>
-              <option value='='>=</option>
-              <option value='+'>+</option>
-              <option value='-'>-</option>
+              <option value='='>=</option><option value='+'>+</option><option value='-'>-</option>
             </select>
             ∠<input type='text' id='Text_AngleToAngle_2'>
           </p>         
           <p><button id='Button_AngleToValue' onclick='ClickButton_AngleToValue()' class='input_button'>入力</button>&emsp;∠<input type='text' id='Text_AngleToValue_1'>
             <select id='angle_to_value' class='one_letter_select'>
-              <option value='='>=</option>
-              <option value='+'>+</option>
-              <option value='-'>-</option>
+              <option value='='>=</option><option value='+'>+</option><option value='-'>-</option>
             </select>
             <input type='text' id='Text_AngleToValue_2'>°
           </p>
           <p><button id='Button_ValueToAngle' onclick='ClickButton_ValueToAngle()' class='input_button'>入力</button>&emsp;<input type='text' id='Text_ValueToAngle_1'>°
             <select id='value_to_angle' class='one_letter_select'>
-              <option value='+'>+</option>
-              <option value='-'>-</option>
+              <option value='+'>+</option><option value='-'>-</option>
             </select>
             ∠<input type='text' id='Text_ValueToAngle_2'>
           </p>
@@ -110,9 +101,7 @@
           </p>
           <p><button id='Button_AddAngle' onclick='ClickButton_AddAngle()' class='input_button'>入力</button>&emsp;
             <select id='add_angle' class='one_letter_select'>
-              <option value='='>=</option>
-              <option value='+'>+</option>
-              <option value='-'>-</option>
+              <option value='='>=</option><option value='+'>+</option><option value='-'>-</option>
             </select>
             ∠<input type='text' id='Text_AddAngle'>
           </p>
@@ -154,12 +143,8 @@
           </p>
           <p><button id='Button_FromNumber' onclick='ClickButton_FromNumber()' class='input_button'>入力</button>&emsp;<input type='text' id='Text_FromNumber'>より</p>
           <p>
-            <button onclick="setVisible('.relation-side-angle')" class="move_button">←仮定</button>
-            <button onclick="setVisible('.conclusion-basis')" class="move_button">辺・角の関係→</button>
-          </p>
-          <p>
-            <button onclick="setVisible('.assumption')" class="move_button">←仮定</button>
-            <button onclick="setVisible('.relation-side-angle')" class="move_button">辺・角の関係→</button>
+            <button onclick="setVisible('.relation-side-angle')" class="move_button">←辺・角の関係</button>
+            <button onclick="setVisible('.conclusion-basis')" class="move_button">結論の根拠→</button>
           </p>
         </div>
         <div class='invisible conclusion-basis'>
