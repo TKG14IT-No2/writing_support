@@ -15,7 +15,7 @@ button{
 }
 .move_button{
     width: 120px;
-    background-color: #8000ff;
+    background-color: #00ff00;
     border: 2px solid #6000c0;
     color: #fff;
     &:hover{
