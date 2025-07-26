@@ -132,19 +132,6 @@ summary{
     color: #000;
   }
 }
-textarea{
-  font-size: 25px;
-  border-radius: 5px;
-  resize: vertical;
-  width: 100%;
-  min-height: 800px;
-}
-textarea.writing_integrate{
-  height: 770px
-}
-.visible{
-  display: block;
-}
 .invisible{
   display: none;
 }
