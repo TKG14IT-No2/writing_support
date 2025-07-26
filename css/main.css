@@ -1,0 +1,146 @@
+.item {
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  margin-bottom: 1vh;
+  padding: 0.5vh;
+  border-radius: 0.5vw;
+  background-color: #db8;
+  cursor: grab;
+}
+
+.output-area {
+  padding: 0.5vh;
+  border: 0.3vh solid #000;
+  border-radius: 0.5vw;
+  background-color: #fff;
+}
+.output-area.level-1 {
+  width: 25vw;
+  height: 50vw;
+}
+
+button {
+  width: 6vw;
+  height: 4vh;
+  font-size: 0.7vw;
+  border-radius: 0.5vw;
+}
+.input_button {
+  background-color: #0080ff;
+  border: 0.3vh solid #0060c0;
+  color: #fff;
+}
+.input_button:hover {
+  background-color: #fff;
+  color: #0080ff;
+}
+.move_button {
+  width: 12vw;
+  background-color: #8000ff;
+  border: 0.3vh solid #6000c0;
+  color: #fff;
+}
+.move_button:hover {
+  background-color: #fff;
+  color: #8000ff;
+}
+.delete_button {
+  background-color: #f00;
+  border: 0.3vh solid #c00;
+  color: #fff;
+}
+.delete_button:hover {
+  background-color: #fff;
+  color: #f00;
+}
+.numbering_button {
+  background-color: #008000;
+  border: 0.3vh solid #006000;
+  color: #fff;
+}
+.numbering_button:hover {
+  background-color: #fff;
+  color: #008000;
+}
+
+input,
+select {
+  width: 7vw;
+  height: 4vh;
+  border: 0.2vh solid #000;
+  border-radius: 0.5vw;
+}
+
+table {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border-collapse: separate;
+  border-spacing: 0.5vw;
+  border: none;
+}
+table th,
+table td {
+  border-radius: 0.5vw;
+  padding: 1vh;
+}
+table th {
+  background-color: #c79852;
+  text-align: center;
+  color: white;
+  border: solid 0.2vh #927141;
+  font-size: 1.8vh;
+}
+table td {
+  background-color: #e4d4bc;
+  text-align: left;
+  border: solid 0.2vh #af9d85;
+  vertical-align: top;
+  line-height: 1.2;
+}
+
+summary {
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 0.5vw;
+}
+summary:hover {
+  background-color: #bee1de;
+}
+
+#invisible {
+  color: #e4d4bc;
+}
+#invisible:hover {
+  cursor: pointer;
+  background-color: #bee1de;
+  color: #000;
+}
+
+textarea {
+  font-size: 2vh;
+  border-radius: 0.5vw;
+  resize: vertical;
+  width: 100%;
+  min-height: 60vh;
+}
+textarea.writing_integrate {
+  height: 58vh;
+}
+
+.visible {
+  display: block;
+}
+.invisible {
+  display: none;
+}
+
+/* 修正：幅をvw基準に */
+.width-400 {
+  min-width: 28vw;
+  max-width: 28vw;
+}
