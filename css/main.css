@@ -1,0 +1,174 @@
+.item{
+  height: auto;
+  min-height: 40px;
+  display: block;
+  align-items: center;
+  text-align: left;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 5px;
+  background-color: #db8;
+  border:solid 1px #a98;
+  border-radius: 5px;
+  cursor: grab;
+}
+
+.output-area{
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 2px solid #000;
+}
+.output-area.level-1{
+  width: auto;
+  height: auto;
+  min-width: 97%;
+  min-height: 97%;
+}
+.output-area.level-2{
+  width: auto;
+  height: auto;
+  min-width: 97%;
+  min-height: 40px;
+}
+
+button{
+  width: 60px;
+  height: 40px;
+  font-size: 12.5px;
+  border-radius:5px;
+}
+
+.move-button{
+  width: 120px;
+  background-color: #08f;
+  border: 2px solid #06c;
+  color: #fff;
+  &:hover{
+    background-color: #fff;
+    color: #08f;
+  }
+}
+
+.delete-button{
+  background-color: #f00;
+  border: 2px solid #c00;
+  color: #fff;
+  &:hover{
+    background-color: #fff;
+    color: #f00;
+  }
+
+}
+
+.numbering-button{
+  width: 100px;
+  background-color: #080;
+  border: 2px solid #060;
+  color: #fff;
+
+  &:hover{
+    background-color: #fff;
+    color: #080;
+  }
+}
+.delete-numbering-button{
+  width: 100px;
+  background-color: #80f;
+  border: 2px solid #60c;
+  color: #fff;
+
+  &:hover{
+    background-color: #fff;
+    color: #80f;
+  }
+}
+
+input{
+  width: 80px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.numbering-input{
+  width: 40px;
+}
+
+select{
+  width: auto;
+  min-width: 80px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+table{
+  border-collapse:separate;
+  border-spacing: 5px;
+  border: none;
+  height: 100vh;
+}
+
+table th,table td{
+  border-radius: 5px;
+  padding: 5px 5px;
+  width: auto;
+  min-width: 48vw;
+  max-width: 48vw;
+}
+
+table th{
+  background-color: #c79852;
+  text-align: center;
+  color: white;
+  border: solid 1px #927141;
+  font-size: 20px;
+  height: 2em;
+}
+
+table td{
+  background-color: #e4d4bc;
+  text-align: left;
+  border: solid 1px #af9d85;
+  vertical-align: top;
+  line-height: 1.0;
+}
+
+table td.output-td{
+  text-align: center;
+}
+
+.invisible{
+  display: none;
+}
+
+/* モーダル全体の背景 */
+.modal-overlay {
+  display: none; /* 初期は非表示 */
+  position: fixed;
+  top: 0; left: 0;
+  width: 97%; height: 97%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* モーダルの中身 */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  position: relative;
+}
+
+/* 閉じるボタン */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}

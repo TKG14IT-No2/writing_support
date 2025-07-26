@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>記述支援システム</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+
+  <body>
+    <table border="1">
+      <tr>
+        <th>記述内容</th>
+        <th colspan="3">テンプレート</th>
+      </tr>
+      <td>
+        <div id="default-output" class="output-area level-1"></div>
+      </td>
+      <td>
+        <div id="assumption">
+          <summary><h1>仮定</h1></summary>
+          <p>
+            <button class="move-button" style="pointer-events: none; visibility: hidden;">非表示</button>
+            <button onclick="showScreen('derive-basis')" class="move-button">導出の根拠→</button>
+          </p>
+          <br>
+          <div class="item">△<input type="text">と△<input type="text">において</div>
+          <div class="item">△<input type="text">において</div>
+          <br>
+          <h2>一括入力</h2>
+          <div class="item double-triangle">△<input type="text" id="double-assumption-1">と△<input type="text" id="double-assumption-2">において</div>
+          <div class="item single-triangle">△<input type="text" id="single-assumption">において</div>
+        </div>
+        <div id="derive-basis" class="invisible">
+          <summary><h1>導出の根拠</h1></summary>
+          <p>
+            <button onclick="showScreen('assumption')" class="move-button">←仮定</button>
+            <button onclick="showScreen('relation-side-angle')" class="move-button">辺・角の関係→</button>
+          </p>
+          <br>
+          <div class="item">仮定から</div>
+          <div class="item">対角は等しいから</div>
+          <div class="item">平行線の
+            <select>
+              <option value="同位角">同位角</option><option value="錯角">錯角</option>  
+            </select>は等しいから
+          </div>
+          <div class="item">等しい長さの弧に対する円周角は等しいから</div>
+          <div class="item">共通だから</div>
+          <div class="item">
+            <select>
+              <option value="△">三角形</option><option value="四角形">四角形</option>
+            </select>
+            <input type="text">は
+            <select>
+              <optgroup label="三角形"><option value="正三角形">正三角形</option><option value="直角三角形">直角三角形</option><option value="二等辺三角形">二等辺三角形</option><option value="直角二等辺三角形">直角二等辺三角形</option></optgroup>
+              <optgroup label="四角形"><option value="正方形">正方形</option><option value="長方形">長方形</option><option value="ひし形">ひし形</option><option value="台形">台形</option></optgroup>
+            </select>だから
+          </div>
+        </div>
+        <div id="relation-side-angle" class="invisible">
+          <summary><h1>辺・角の関係</h1></summary>
+          <p>
+            <button onclick="showScreen('derive-basis')" class="move-button">←導出の根拠</button>
+            <button onclick="showScreen('conclusion')" class="move-button">結論→</button>
+          </p>
+          <br>
+          <!-- can-numbering-->
+          <div class="item">
+            <select>
+              <option value="線分">線分</option><option value="弧">弧</option>
+            </select>
+            <input type="text">
+            <select>
+              <option value="=">=</option><option value="⊥">⊥</option><option value="∥">∥</option>
+            </select>
+            <select>
+              <option value="線分">線分</option><option value="弧">弧</option>
+            </select>
+            <input type="text">
+          </div>
+          <!-- can-numbering-->
+          <div class="item">∠<input type="text">
+            <select>
+              <option value="=">=</option><option value="+">+</option><option value="-">-</option>
+            </select>
+            ∠<input type="text">
+          </div>
+          <!-- can-numbering-->
+          <div class="item">∠<input type="text">
+            <select>
+              <option value="=">=</option><option value="+">+</option><option value="-">-</option>
+            </select>
+            <input type="text">°
+          </div>
+          <!-- can-numbering-->
+          <div class="item"><input type="text">°
+            <select>
+              <option value="+">+</option><option value="-">-</option>
+            </select>
+            ∠<input type="text">
+          </div>
+          <!-- can-numbering-->
+          <div class="item">
+            <input type="text">:<input type="text">=
+            <input type="text">:<input type="text">
+          </div>
+          <!-- can-numbering-->
+<!--          <div class="item">
+            <select>
+              <option value="=">=</option><option value="+">+</option><option value="-">-</option>
+            </select>
+            ∠<input type="text">
+          </div>
+          <br>
+          <div class="item"><input type="text" id="reasonNumberText">より</div>-->
+        </div>
+        <div id="conclusion" class="invisible">
+          <summary><h1>結論</h1></summary>
+          <p>
+            <button onclick="showScreen('relation-side-angle')" class="move-button">←辺・角の関係</button>
+          </p>
+          <div class="item">
+            <select>
+              <optgroup label="合同"><option>1組の辺とその両端の角がそれぞれ等しいから</option><option>2組の辺とその間の角がそれぞれ等しいから</option><option>3組の辺がそれぞれ等しいから</option></optgroup>
+              <optgroup label="相似"><option>2組の角がそれぞれ等しいから</option><option>2組の辺の比とその間の角がそれぞれ等しいから</option><option>3組の辺の比がそれぞれ等しいから</option></optgroup>
+            </select></div>
+          <br>
+          <!-- can-numbering-->
+          <div class="item">△<input type="text">
+            <select>
+              <option value="≡">≡</option><option value="∽">∽</option>
+            </select>
+            △<input type="text">
+          </div>
+          <!-- can-numbering-->
+          <div class="item">△<input type="text">は
+            <select>
+              <option value="正三角形">正三角形</option><option value="二等辺三角形">二等辺三角形</option><option value="直角三角形">直角三角形</option>
+            </select>
+          </div>
+        </div>
+      </td>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>
