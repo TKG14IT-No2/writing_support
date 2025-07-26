@@ -1,3 +1,8 @@
+html{
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
 .item{
   height: auto;
   min-height: 40px;
