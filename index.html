@@ -7,13 +7,13 @@
   </head>
 
   <body>
+    <button class="help-button" onclick="openModal()">?</button>
     <table border="1">
       <tr>
         <th>記述内容</th>
-        <th colspan="3">テンプレート</th>
+        <th>テンプレート</th>
       </tr>
       <td>
-        <button onclick="openModal()">?</button>
         <div id="default-output" class="output-area level-1"></div>
       </td>
       <td>
@@ -26,10 +26,6 @@
           <br>
           <div class="item">△<input type="text">と△<input type="text">において</div>
           <div class="item">△<input type="text">において</div>
-          <br>
-          <h2>一括入力</h2>
-          <div class="item double-triangle">△<input type="text" id="double-assumption-1">と△<input type="text" id="double-assumption-2">において</div>
-          <div class="item single-triangle">△<input type="text" id="single-assumption">において</div>
         </div>
         <div id="derive-basis" class="invisible">
           <summary><h1>導出の根拠</h1></summary>
@@ -65,7 +61,6 @@
             <button onclick="showScreen('conclusion')" class="move-button">結論→</button>
           </p>
           <br>
-          <!-- can-numbering-->
           <div class="item">
             <select>
               <option value="線分">線分</option><option value="弧">弧</option>
@@ -79,28 +74,18 @@
             </select>
             <input type="text">
           </div>
-          <!-- can-numbering-->
           <div class="item">∠<input type="text">
             <select>
               <option value="=">=</option><option value="+">+</option><option value="-">-</option>
             </select>
             ∠<input type="text">
           </div>
-          <!-- can-numbering-->
           <div class="item">∠<input type="text">
             <select>
               <option value="=">=</option><option value="+">+</option><option value="-">-</option>
             </select>
             <input type="text">°
           </div>
-          <!-- can-numbering-->
-          <div class="item"><input type="text">°
-            <select>
-              <option value="+">+</option><option value="-">-</option>
-            </select>
-            ∠<input type="text">
-          </div>
-          <!-- can-numbering-->
           <div class="item">
             <input type="text">:<input type="text">=
             <input type="text">:<input type="text">
@@ -111,20 +96,20 @@
           <p>
             <button onclick="showScreen('relation-side-angle')" class="move-button">←辺・角の関係</button>
           </p>
+          <div class="item"><input type="text" id="reason-numbering">より</div>
+          <br>
           <div class="item">
             <select>
               <optgroup label="合同"><option>1組の辺とその両端の角がそれぞれ等しいから</option><option>2組の辺とその間の角がそれぞれ等しいから</option><option>3組の辺がそれぞれ等しいから</option></optgroup>
               <optgroup label="相似"><option>2組の角がそれぞれ等しいから</option><option>2組の辺の比とその間の角がそれぞれ等しいから</option><option>3組の辺の比がそれぞれ等しいから</option></optgroup>
             </select></div>
           <br>
-          <!-- can-numbering-->
           <div class="item">△<input type="text">
             <select>
               <option value="≡">≡</option><option value="∽">∽</option>
             </select>
             △<input type="text">
           </div>
-          <!-- can-numbering-->
           <div class="item">△<input type="text">は
             <select>
               <option value="正三角形">正三角形</option><option value="二等辺三角形">二等辺三角形</option><option value="直角三角形">直角三角形</option>
@@ -133,7 +118,33 @@
         </div>
       </td>
     </table>
-    <div class="modal-overlay" id="modal"></div>
+    <div class="modal-overlay" id="modal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <h1>設定・ヘルプ</h1>
+        <div class="theme-selector">
+          <label for="theme">テーマカラーの変更:</label>
+          <select id="theme">
+            <option value="white">白</option>
+            <option value="black">黒</option>
+            <option value="red">赤</option>
+            <option value="blue">青</option>
+            <option value="green">緑</option>
+            <option value="yellow">黄色</option>
+            <option value="purple">紫</option>
+          </select>
+        </div>
+        <div class="slider">
+          <p>使い方:</p>
+          <div class="controls"></div>
+            <button class="HTU-button" onclick="prevHTU()"><</button>
+            <img id="sliderImage" src="img/img1.jpg" alt="スライド" width="750">
+            <button class="HTU-button" onclick="nextHTU()">></button>
+          </div>
+          <div id="indicators" class="indicators"></div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <script src="js/main.js" charset="utf-8"></script>
   </body>

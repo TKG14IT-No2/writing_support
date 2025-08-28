@@ -2,7 +2,7 @@ const get = id => document.getElementById(id);
 const show = id => get(id).classList.remove('invisible');
 const hide = id => get(id).classList.add('invisible');
 let outputId = 0;
-let reasonNumbering = 0;
+let reasonNumber = 0;
 let doubleAssumption1Value;
 let doubleAssumption2Value;
 let singleAssumptionValue;
@@ -42,7 +42,6 @@ function onAddExe(evt) {
       
   if (item.classList.contains('item')) {
     const newItem = document.createElement('div');
-    console.log(evt.item.classList.value);
     newItem.className = `${item.classList.value} inserted-item`;
     let newOutput;
 
@@ -60,76 +59,27 @@ function onAddExe(evt) {
 
     // div.itemの内容をコピー
     item.childNodes.forEach(node => {
-      if (node.nodeType === 1 && (node.classList.contains('delete-button') || node.classList.contains('numbering-button'))) {
-        return; // 特殊ボタンはスキップ
-      }
-      if (node.nodeType === 1 && node.id === 'double-assumption-1') {
-        doubleAssumption1Value = node.value;
-        node.removeAttribute('id'); // IDを削除
-      }
-      if (node.nodeType === 1 && node.id === 'double-assumption-2') {
-        doubleAssumption2Value = node.value;
-        node.removeAttribute('id'); // IDを削除
-      }
-      if (node.nodeType === 1 && node.id === 'single-assumption') {
-        singleAssumptionValue = node.value;
-        node.removeAttribute('id'); // IDを削除
-      }
       const cloned = node.cloneNode(true);
+      if (cloned.nodeType === Node.ELEMENT_NODE) {
+        if (cloned.id){
+          cloned.removeAttribute('id'); // id属性を削除
+        }
+        // select要素の場合は選択状態を維持
+        if (cloned.tagName === 'SELECT') {
+          console.log(cloned)
+          cloned.selectedIndex = node.selectedIndex;
+        }
+      }
+
       newItem.appendChild(cloned);
     });
 
-    // 番号ボタン
-    if (item.classList.contains('can-numbering')) {
-      // 空白
-      const space = document.createElement('span');
-      space.textContent = ' ';
-      newItem.appendChild(space);
-
-      const numberingButton = document.createElement('button');
-      numberingButton.textContent = '番号をつける';
-      numberingButton.className = 'numbering-button button';
-      numberingButton.onclick = eventNumbering;
-      newItem.appendChild(numberingButton);
-    }
-
-    // 番号削除ボタン
-    if (item.classList.contains('was-numbered')) {
-      numbering(item);
-    }
-
-    // テンプレートなら処理
-    if (item.classList.contains('double-triangle') || item.classList.contains('single-triangle')) {
-      const spacer = document.createElement('div');
-      spacer.innerHTML = '<div>&emsp;</div>';
-      newItem.appendChild(spacer);
-      
-      // 新しい出力エリアを作成
-      newOutput = document.createElement('div');
-      newOutput.className = 'output-area level-2';
-      newOutput.id = `output-${outputId++}`;
-      newItem.appendChild(newOutput);
-
-      if (item.classList.contains('double-triangle')) {
-        const conclusionBasis = document.createElement('div');
-        conclusionBasis.innerHTML = `<div class="item"><select><optgroup label="合同"><option>1組の辺とその両端の角がそれぞれ等しいから</option><option>2組の辺とその間の角がそれぞれ等しいから</option><option>3組の辺がそれぞれ等しいから</option></optgroup><optgroup label="相似"><option>2組の角がそれぞれ等しいから</option><option>2組の辺の比とその間の角がそれぞれ等しいから</option><option>3組の辺の比がそれぞれ等しいから</option></optgroup></select></div>`;
-        const conclusionBasisFirstChild = conclusionBasis.firstChild;
-        get('default-output').appendChild(conclusionBasisFirstChild);
-        onAddExe({item: conclusionBasisFirstChild, to: get('default-output')});
-
-        const conclusion = document.createElement('div');
-        conclusion.innerHTML = `<div class="item">△<input type="text" value=${doubleAssumption1Value}><select><option value="≡">≡</option><option value="∽">∽</option></select>△<input type="text" value=${doubleAssumption2Value}></div>`; //  can-numbering
-        const conclusionFirstChild = conclusion.firstChild;
-        get('default-output').appendChild(conclusionFirstChild);
-        onAddExe({item: conclusionFirstChild, to: get('default-output')});
-      } else {
-        const conclusion = document.createElement('div');
-        conclusion.innerHTML = `<div class="item">△<input type="text" value=${singleAssumptionValue}>は<select><option value="正三角形">正三角形</option><option value="二等辺三角形">二等辺三角形</option><option value="直角三角形">直角三角形</option></select></div>`;  //  can-numbering
-        const tempFirstChild = conclusion.firstChild;
-        get('default-output').appendChild(tempFirstChild);
-        onAddExe({item: tempFirstChild, to: get('default-output')});
-      }
-    }
+    // 番号付けボタン
+    const numbering = document.createElement('button');
+    numbering.textContent = '+';
+    numbering.classList = 'mini-button button';
+    numbering.onclick = numberingItem;
+    newItem.appendChild(numbering);
 
     // 元のコピーアイテムを新しいものに置き換え
     parent.replaceChild(newItem, item);
@@ -145,59 +95,53 @@ function deleteItem(event) {
   if (item) item.remove();
 }
 
-function numbering(item) {
-  // .numbering-button をすべて取得し削除
-  const numberingButtons = item.querySelectorAll('.numbering-button');
-  numberingButtons.forEach(btn => btn.remove());
-
-  const text_1 = document.createTextNode('...(');
-  item.appendChild(text_1);
+function numberingItem(event) {
+  const button = event.target;
+  const parent = event.target.parentElement;
   
-  const number = document.createElement('input');
-  number.type = 'number';
-  number.className = 'numbering-input';
-  number.value = ++reasonNumbering; // 番号をインクリメント
-  number.min = 1;
-  number.onchange = function() {
-    reasonNumbering = this.value; // 入力値で番号を更新
-  }
-  item.appendChild(number);
+  const number = document.createElement('button');
+  number.textContent = `...(${++reasonNumber})`;
+  number.classList = 'numbered-button button';
+  number.onclick = useNumber;
 
-  const text_2 = document.createTextNode(')');
-  item.appendChild(text_2);
-  
-  item.classList.remove('can-numbering'); // 番号付け可能な状態を解除
-  item.classList.add('was-numbered'); // 番号が付けられたことを示すクラスを追加
+  const remove = document.createElement("button");
+  remove.textContent = '×';
+  remove.classList = 'mini-button button';
+  remove.onclick = removeNumber;
 
-
-  const deleteNumber = document.createElement('button');
-  deleteNumber.textContent = '番号を削除';
-  deleteNumber.className = 'delete-numbering-button button';
-  deleteNumber.onclick = function() {
-    item.classList.remove('was-numbered'); // 番号が付けられた状態を解除
-    item.classList.add('can-numbering'); // can-numbering クラスを戻す
-    reasonNumbering--; // 番号をデクリメント
-    // 番号を削除する処理
-    item.removeChild(text_1);
-    item.removeChild(number);
-    item.removeChild(text_2);
-    item.removeChild(deleteNumber); // ボタンを削除
-    
-    // 元の「番号をつける」ボタンを復元
-    const numberingButton = document.createElement('button');
-    numberingButton.textContent = '番号をつける';
-    numberingButton.className = 'numbering-button button';
-    numberingButton.onclick = eventNumbering;
-    item.appendChild(numberingButton);
-  };
-  item.appendChild(deleteNumber);
-}
-function eventNumbering(event) {
-  numbering(event.target.closest('.item'));
+  parent.removeChild(button);
+  parent.appendChild(number);
+  parent.appendChild(remove);
 }
 
-function ClickButton_ReasonNumber(data){
-  Text_FromNumber.value += data;
+function useNumber(event) {
+  const button = event.target;
+  const result = button.textContent.slice(3);
+
+  const reason = get('reason-numbering');
+  reason.value = reason.value + result;
+}
+
+function removeByClass(parent, className) {
+  const children = parent.querySelectorAll(`.${className}`);
+  children.forEach(child => child.remove());
+}
+
+function removeNumber(event) {
+  const button = event.target;
+  const parent = event.target.parentElement;
+  
+  // 番号付けボタン
+  const numbering = document.createElement('button');
+  numbering.textContent = '+';
+  numbering.classList = 'mini-button button';
+  numbering.onclick = numberingItem;
+  
+  reasonNumber--;
+
+  removeByClass(parent, 'numbered-button');
+  parent.removeChild(button);
+  parent.appendChild(numbering);  
 }
 
 function showScreen(id) {
@@ -208,114 +152,97 @@ function showScreen(id) {
 }
 
 function openModal(){
-  modal = get("modal");
-  let modalHTML = `<div>
-    <span class="modal-close" onclick="closeModal()">×</span>
-    <p>これはモーダルウィンドウです。</p>
-    <p>This is modal window.</p>
-    <div class="theme-selector">
-      <label for="theme">テーマカラー:</label>
-      <select id="theme">
-        <option value="red">赤</option>
-        <option value="blue">青</option>
-        <option value="green">緑</option>
-        <option value="yellow">黄色</option>
-        <option value="purple">紫</option>
-        <option value="white">白</option>
-        <option value="black">黒</option>
-      </select>
-    </div>
-  </div>`;
-
-  modal.innerHTML = modalHTML;
-  modal.style.display = "flex";
+  get("modal").style.display = "flex";
 }
-
 function closeModal(){
   get("modal").style.display = "none";
 }
 
+// イベントリスナー
+get("theme").addEventListener("change", (e) => {
+  currentTheme = e.target.value;
+  applyTheme(e.target.value);
+});
+
 const themes = {
  white: {
-    "--bg-color": "#ffffff",
+    "--bg-color": "#f8f8f8",
     "--text-color": "#000000",
-    "--move-btn-bg": "#cccccc",
-    "--delete-btn-bg": "#999999",
+    "--btn-bg": "#999999",
     "--btn-text": "#000000",
     "--title-color": "#e6e6e6",
-    "--item-color": "#f2f2f2",
+    "--item-color": "#e0e0e0",
     "--box-color": "#ffffff",
-    "--box-text": "#000000"
+    "--box-text": "#000000",
+    "--border-color": "#bfbfbf"
   },
   black: {
     "--bg-color": "#1a1a1a",
     "--text-color": "#ffffff",
-    "--move-btn-bg": "#333333",
-    "--delete-btn-bg": "#666666",
+    "--btn-bg": "#555555",
     "--btn-text": "#ffffff",
     "--title-color": "#2a2a2a",
     "--item-color": "#262626",
     "--box-color": "#0d0d0d",
-    "--box-text": "#ffffff"
+    "--box-text": "#ffffff",
+    "--border-color": "#666666"
   },
   red: {
     "--bg-color": "#ffe5e5",
     "--text-color": "#660000",
-    "--move-btn-bg": "#cc0000",
-    "--delete-btn-bg": "#990000",
+    "--btn-bg": "#990000",
     "--btn-text": "#ffffff",
     "--title-color": "#ffb3b3",
     "--item-color": "#ffcccc",
     "--box-color": "#fff5f5",
-    "--box-text": "#000000"
+    "--box-text": "#000000",
+    "--border-color": "#b30000"
   },
   blue: {
     "--bg-color": "#e5f0ff",
     "--text-color": "#002266",
-    "--move-btn-bg": "#0044cc",
-    "--delete-btn-bg": "#003399",
+    "--btn-bg": "#003399",
     "--btn-text": "#ffffff",
     "--title-color": "#b3d1ff",
     "--item-color": "#cce0ff",
     "--box-color": "#f5f9ff",
-    "--box-text": "#000000"
+    "--box-text": "#000000",
+    "--border-color": "#002299"
   },
   green: {
     "--bg-color": "#e5ffe5",
     "--text-color": "#003300",
-    "--move-btn-bg": "#008800",
-    "--delete-btn-bg": "#006600",
+    "--btn-bg": "#006600",
     "--btn-text": "#ffffff",
     "--title-color": "#b3ffb3",
     "--item-color": "#ccffcc",
     "--box-color": "#f5fff5",
-    "--box-text": "#000000"
+    "--box-text": "#000000",
+    "--border-color": "#004400"
   },
   yellow: {
     "--bg-color": "#fffde5",
     "--text-color": "#665500",
-    "--move-btn-bg": "#e6c300",
-    "--delete-btn-bg": "#cc9900",
+    "--btn-bg": "#cc9900",
     "--btn-text": "#000000",
     "--title-color": "#fff2b3",
     "--item-color": "#fff7cc",
     "--box-color": "#fffff5",
-    "--box-text": "#000000"
+    "--box-text": "#000000",
+    "--border-color": "#cc6600"
   },
   purple: {
     "--bg-color": "#f0e5ff",
     "--text-color": "#330066",
-    "--move-btn-bg": "#6600cc",
-    "--delete-btn-bg": "#4d0099",
+    "--btn-bg": "#4d0099",
     "--btn-text": "#ffffff",
     "--title-color": "#d1b3ff",
     "--item-color": "#e0ccff",
     "--box-color": "#faf5ff",
-    "--box-text": "#000000"
+    "--box-text": "#000000",
+    "--border-color": "#8000ff"
   }
 };
-
-let themeSelect;
 
 function applyTheme(themeName) {
   const theme = themes[themeName];
@@ -325,9 +252,46 @@ function applyTheme(themeName) {
 }
 
 // 初期テーマ
-applyTheme("red");
+applyTheme("white");
 
-// イベントリスナー
-themeSelect.addEventListener("change", (e) => {
-  applyTheme(e.target.value);
-});
+const images = ["img/img1.jpg", "img/img2.jpg", "img/img3.jpg", "img/img4.jpg", "img/img5.jpg", "img/img6.jpg", "img/img7.jpg", "img/img8.jpg"];
+let current = 0;
+
+const imgElement = get("sliderImage");
+const indicators = get("indicators");
+
+// インジケータ更新（クリック可能）
+function updateIndicators() {
+  indicators.innerHTML = ""; // 一度リセット
+  images.forEach((_, i) => {
+    const span = document.createElement("span");
+    span.textContent = (i === current ? "〇" : "●");
+    span.classList.add("indicator");
+    span.addEventListener("click", () => {
+      current = i;
+      updateImage();
+    });
+    indicators.appendChild(span);
+  });
+}
+
+// 表示更新
+function updateImage() {
+  imgElement.src = images[current];
+  updateIndicators();
+}
+
+// 初期表示
+updateImage();
+
+// 進む
+function prevHTU() {
+  current = (current - 1 + images.length) % images.length;
+  updateImage();
+};
+
+// 戻る
+function nextHTU() {
+  current = (current + 1) % images.length;
+  updateImage();
+};
