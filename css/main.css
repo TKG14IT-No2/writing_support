@@ -192,8 +192,8 @@ table td.output-td{
 
 /* モーダルの中身 */
 .modal-content {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: #ffffff;
+  color: #000000;
   font-family: sans-serif;
   padding: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
