@@ -207,7 +207,7 @@ function showScreen(id) {
   show(id);
 }
 
-function openModal(val){
+function openModal(){
   modal = get("collection-modal");
   let modalHTML = `<div>
     <span class="close-button" onclick="closeModal()">×</span>
