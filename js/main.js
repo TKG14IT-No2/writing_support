@@ -208,7 +208,7 @@ function showScreen(id) {
 }
 
 function openModal(){
-  modal = get("collection-modal");
+  modal = get("modal");
   let modalHTML = `<div>
     <span class="close-button" onclick="closeModal()">×</span>
     <p>これはモーダルウィンドウです。</p>
