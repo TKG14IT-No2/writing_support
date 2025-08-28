@@ -236,47 +236,82 @@ function closeModal(){
 }
 
 const themes = {
-  red: {
-    "--bg-color": "#ffe5e5",
-    "--text-color": "#660000",
-    "--btn-bg": "#cc0000",
-    "--btn-text": "#ffffff"
-  },
-  blue: {
-    "--bg-color": "#e5f0ff",
-    "--text-color": "#002266",
-    "--btn-bg": "#0044cc",
-    "--btn-text": "#ffffff"
-  },
-  green: {
-    "--bg-color": "#e5ffe5",
-    "--text-color": "#004400",
-    "--btn-bg": "#008800",
-    "--btn-text": "#ffffff"
-  },
-  yellow: {
-    "--bg-color": "#fffde5",
-    "--text-color": "#665500",
-    "--btn-bg": "#e6c300",
-    "--btn-text": "#000000"
-  },
-  purple: {
-    "--bg-color": "#f0e5ff",
-    "--text-color": "#330066",
-    "--btn-bg": "#6600cc",
-    "--btn-text": "#ffffff"
-  },
  white: {
     "--bg-color": "#ffffff",
     "--text-color": "#000000",
-    "--btn-bg": "#cccccc",
-    "--btn-text": "#000000"
+    "--move-btn-bg": "#cccccc",
+    "--delete-btn-bg": "#999999",
+    "--btn-text": "#000000",
+    "--title-color": "#e6e6e6",
+    "--item-color": "#f2f2f2",
+    "--box-color": "#ffffff",
+    "--box-text": "#000000"
   },
   black: {
     "--bg-color": "#1a1a1a",
     "--text-color": "#ffffff",
-    "--btn-bg": "#333333",
-    "--btn-text": "#ffffff"
+    "--move-btn-bg": "#333333",
+    "--delete-btn-bg": "#666666",
+    "--btn-text": "#ffffff",
+    "--title-color": "#2a2a2a",
+    "--item-color": "#262626",
+    "--box-color": "#0d0d0d",
+    "--box-text": "#ffffff"
+  },
+  red: {
+    "--bg-color": "#ffe5e5",
+    "--text-color": "#660000",
+    "--move-btn-bg": "#cc0000",
+    "--delete-btn-bg": "#990000",
+    "--btn-text": "#ffffff",
+    "--title-color": "#ffb3b3",
+    "--item-color": "#ffcccc",
+    "--box-color": "#fff5f5",
+    "--box-text": "#000000"
+  },
+  blue: {
+    "--bg-color": "#e5f0ff",
+    "--text-color": "#002266",
+    "--move-btn-bg": "#0044cc",
+    "--delete-btn-bg": "#003399",
+    "--btn-text": "#ffffff",
+    "--title-color": "#b3d1ff",
+    "--item-color": "#cce0ff",
+    "--box-color": "#f5f9ff",
+    "--box-text": "#000000"
+  },
+  green: {
+    "--bg-color": "#e5ffe5",
+    "--text-color": "#003300",
+    "--move-btn-bg": "#008800",
+    "--delete-btn-bg": "#006600",
+    "--btn-text": "#ffffff",
+    "--title-color": "#b3ffb3",
+    "--item-color": "#ccffcc",
+    "--box-color": "#f5fff5",
+    "--box-text": "#000000"
+  },
+  yellow: {
+    "--bg-color": "#fffde5",
+    "--text-color": "#665500",
+    "--move-btn-bg": "#e6c300",
+    "--delete-btn-bg": "#cc9900",
+    "--btn-text": "#000000",
+    "--title-color": "#fff2b3",
+    "--item-color": "#fff7cc",
+    "--box-color": "#fffff5",
+    "--box-text": "#000000"
+  },
+  purple: {
+    "--bg-color": "#f0e5ff",
+    "--text-color": "#330066",
+    "--move-btn-bg": "#6600cc",
+    "--delete-btn-bg": "#4d0099",
+    "--btn-text": "#ffffff",
+    "--title-color": "#d1b3ff",
+    "--item-color": "#e0ccff",
+    "--box-color": "#faf5ff",
+    "--box-text": "#000000"
   }
 };
 
