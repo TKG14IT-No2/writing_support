@@ -207,9 +207,18 @@ function showScreen(id) {
   show(id);
 }
 
-function ClickButton_password(){
-    if(Text_password.value == 'tokyometropolitanhighschool2024exam'){
-        writing.value = '△BMRと△DQTにおいて\n四角形ABCDは長方形だから\n線分BC∥線分AD\n平行線の錯角は等しいから\n∠MBR=∠QDT  ...(1)\n仮定から\n線分AM∥線分QP\n平行線の同位角は等しいから\n∠DRA=∠DTQ  ...(2)\n対角は等しいから\n∠BRM=∠DRA  ...(3)\n(2)(3)より\n∠BRM=∠DRA  ...(4)\n(1)(4)より\n2組の角がそれぞれ等しいから\n△BMR∽△DQT';
-    }
+function openModal(val){
+  modal = get("collection-modal");
+  let modalHTML = `<div>
+    <span class="close-button" onclick="closeModal()">×</span>
+    <p>これはモーダルウィンドウです。</p>
+    <p>This is modal window.</p>
+  </div>`;
+
+  modal.innerHTML = modalHTML;
+  modal.style.display = "flex";
 }
 
+function closeModal(){
+  get("modal").style.display = "none";
+}
