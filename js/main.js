@@ -209,13 +209,13 @@ function showScreen(id) {
 
 function openModal(){
   modal = get("modal");
-  let modalHTML = `<div>
+  /*let modalHTML = `<div>
     <span class="close-button" onclick="closeModal()">×</span>
     <p>これはモーダルウィンドウです。</p>
     <p>This is modal window.</p>
   </div>`;
 
-  modal.innerHTML = modalHTML;
+  modal.innerHTML = modalHTML;*/
   modal.style.display = "flex";
 }
 
