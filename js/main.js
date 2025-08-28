@@ -315,7 +315,7 @@ const themes = {
   }
 };
 
-const themeSelect = document.getElementById("theme");
+let themeSelect;
 
 function applyTheme(themeName) {
   const theme = themes[themeName];
