@@ -222,3 +222,65 @@ function openModal(){
 function closeModal(){
   get("modal").style.display = "none";
 }
+
+const themes = {
+  red: {
+    "--bg-color": "#ffe5e5",
+    "--text-color": "#660000",
+    "--btn-bg": "#cc0000",
+    "--btn-text": "#ffffff"
+  },
+  blue: {
+    "--bg-color": "#e5f0ff",
+    "--text-color": "#002266",
+    "--btn-bg": "#0044cc",
+    "--btn-text": "#ffffff"
+  },
+  green: {
+    "--bg-color": "#e5ffe5",
+    "--text-color": "#004400",
+    "--btn-bg": "#008800",
+    "--btn-text": "#ffffff"
+  },
+  yellow: {
+    "--bg-color": "#fffde5",
+    "--text-color": "#665500",
+    "--btn-bg": "#e6c300",
+    "--btn-text": "#000000"
+  },
+  purple: {
+    "--bg-color": "#f0e5ff",
+    "--text-color": "#330066",
+    "--btn-bg": "#6600cc",
+    "--btn-text": "#ffffff"
+  },
+ white: {
+    "--bg-color": "#ffffff",
+    "--text-color": "#000000",
+    "--btn-bg": "#cccccc",
+    "--btn-text": "#000000"
+  },
+  black: {
+    "--bg-color": "#1a1a1a",
+    "--text-color": "#ffffff",
+    "--btn-bg": "#333333",
+    "--btn-text": "#ffffff"
+  }
+};
+
+const themeSelect = document.getElementById("theme");
+
+function applyTheme(themeName) {
+  const theme = themes[themeName];
+  for (const key in theme) {
+    document.documentElement.style.setProperty(key, theme[key]);
+  }
+}
+
+// 初期テーマ
+applyTheme("red");
+
+// イベントリスナー
+themeSelect.addEventListener("change", (e) => {
+  applyTheme(e.target.value);
+});
