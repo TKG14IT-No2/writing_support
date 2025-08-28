@@ -209,13 +209,25 @@ function showScreen(id) {
 
 function openModal(){
   modal = get("modal");
-  /*let modalHTML = `<div>
-    <span class="close-button" onclick="closeModal()">×</span>
+  let modalHTML = `<div>
+    <span class="modal-close" onclick="closeModal()">×</span>
     <p>これはモーダルウィンドウです。</p>
     <p>This is modal window.</p>
+    <div class="theme-selector">
+      <label for="theme">テーマカラー:</label>
+      <select id="theme">
+        <option value="red">赤</option>
+        <option value="blue">青</option>
+        <option value="green">緑</option>
+        <option value="yellow">黄色</option>
+        <option value="purple">紫</option>
+        <option value="white">白</option>
+        <option value="black">黒</option>
+      </select>
+    </div>
   </div>`;
 
-  modal.innerHTML = modalHTML;*/
+  modal.innerHTML = modalHTML;
   modal.style.display = "flex";
 }
 
