@@ -9,15 +9,16 @@ let singleAssumptionValue;
 
 // ドラッグ可能な要素 (input)
 ['assumption', 'derive-basis', 'relation-side-angle', 'conclusion'].forEach(el => {
-  new Sortable(get(el), {
-    group: {
-      name: 'shared',
-      pull: 'clone',
-      put: false
-    },
-    sort: false,
-    filter: 'button', // button自体はドラッグ対象から除外
-    preventOnFilter: false
+  if (el.classList.contains('item')
+    new Sortable(get(el), {
+      group: {
+        name: 'shared',
+        pull: 'clone',
+        put: false
+      },
+      sort: false,
+      filter: 'button', // button自体はドラッグ対象から除外
+      preventOnFilter: false
     });
 });
 
@@ -294,4 +295,5 @@ function prevHTU() {
 function nextHTU() {
   current = (current + 1) % images.length;
   updateImage();
+
 };
