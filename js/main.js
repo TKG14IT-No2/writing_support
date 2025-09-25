@@ -9,7 +9,7 @@ let singleAssumptionValue;
 
 // ドラッグ可能な要素 (input)
 ['assumption', 'derive-basis', 'relation-side-angle', 'conclusion'].forEach(el => {
-  if (el.classList.contains('item')
+  if (el.classList.contains('item') {
     new Sortable(get(el), {
       group: {
         name: 'shared',
@@ -19,7 +19,7 @@ let singleAssumptionValue;
       sort: false,
       filter: 'button', // button自体はドラッグ対象から除外
       preventOnFilter: false
-    });
+  }});
 });
 
 // ドロップ先 (output)
@@ -297,3 +297,4 @@ function nextHTU() {
   updateImage();
 
 };
+
