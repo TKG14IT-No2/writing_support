@@ -19,7 +19,7 @@ let singleAssumptionValue;
       sort: false,
       filter: 'button', // button自体はドラッグ対象から除外
       preventOnFilter: false
-  }};
+  })};
 });
 
 // ドロップ先 (output)
@@ -297,5 +297,6 @@ function nextHTU() {
   updateImage();
 
 };
+
 
 
