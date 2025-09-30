@@ -16,7 +16,7 @@ let singleAssumptionValue;
       put: false
     },
     sort: false,
-    draggable: 'div.item'
+    draggable: 'div.item',
     preventOnFilter: false
   });
 });
@@ -296,6 +296,7 @@ function nextHTU() {
   updateImage();
 
 };
+
 
 
 
