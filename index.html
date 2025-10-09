@@ -18,7 +18,7 @@
       </td>
       <td>
         <div id="assumption">
-          <summary><h1>仮定</h1></summary>
+        <h1>仮定</h1>
           <p>
             <button class="move-button" style="pointer-events: none; visibility: hidden;">非表示</button>
             <button onclick="showScreen('derive-basis')" class="move-button">導出の根拠→</button>
@@ -26,9 +26,13 @@
           <br>
           <div class="item">△<input type="text">と△<input type="text">において</div>
           <div class="item">△<input type="text">において</div>
+          <br>
+          <br>
+          <h2>自由記述用テンプレート</h2>
+          <div class="item"><input type=""></div>
         </div>
         <div id="derive-basis" class="invisible">
-          <summary><h1>導出の根拠</h1></summary>
+        <h1>導出の根拠</h1>
           <p>
             <button onclick="showScreen('assumption')" class="move-button">←仮定</button>
             <button onclick="showScreen('relation-side-angle')" class="move-button">辺・角の関係→</button>
@@ -55,7 +59,7 @@
           </div>
         </div>
         <div id="relation-side-angle" class="invisible">
-          <summary><h1>辺・角の関係</h1></summary>
+        <h1>辺・角の関係</h1>
           <p>
             <button onclick="showScreen('derive-basis')" class="move-button">←導出の根拠</button>
             <button onclick="showScreen('conclusion')" class="move-button">結論→</button>
@@ -92,7 +96,7 @@
           </div>
         </div>
         <div id="conclusion" class="invisible">
-          <summary><h1>結論</h1></summary>
+        <h1>結論</h1>
           <p>
             <button onclick="showScreen('relation-side-angle')" class="move-button">←辺・角の関係</button>
           </p>
